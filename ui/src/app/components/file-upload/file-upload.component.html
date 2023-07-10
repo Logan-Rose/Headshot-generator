@@ -1,0 +1,27 @@
+<div class="text-center">
+  <input class="form-control" type="file" (change)="onChange($event)" />
+
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="onUpload()"
+    class="btn btn-success"
+  >
+    Generate Headshot
+  </button>
+</div>
+
+<div style="display: flex; flex-direction: row">
+  <div *ngFor="let image of tmpImages">
+    <!-- <div *ngFor="let image of images$ | async"> -->
+    <mat-card style="margin: 5px; padding: 5px">
+      <img src="{{ image.url }}" />
+      <button (click)="downloadImage(image.url)">Download</button>
+    </mat-card>
+  </div>
+</div>
+
+<!--Flag variable is used here-->
+<div class="container" *ngIf="loading">
+  <h3>Loading ...</h3>
+</div>
